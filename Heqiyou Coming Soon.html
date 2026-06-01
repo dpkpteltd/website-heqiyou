@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Heqiyou — Coming soon</title>
+<meta name="description" content="Heqiyou is on its way. Talk first. Reveal later." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --brand-coral:#FF9A8B;--deep-coral:#C67B7B;
+  --text-primary:#2A2522;--text-secondary:#6B6360;--text-tertiary:#A39B97;
+  --grad-accent:linear-gradient(160deg,#FF9A8B,#C67B7B);
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+*,*::before,*::after{box-sizing:border-box;}
+html,body{height:100%;}
+body{
+  margin:0;font-family:'Inter',system-ui,sans-serif;color:var(--text-primary);
+  background:linear-gradient(180deg,#FFFBF0,#FFF5F5);
+  -webkit-font-smoothing:antialiased;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+}
+h1,p{margin:0;text-wrap:pretty;}
+:focus-visible{outline:2.5px solid var(--deep-coral);outline-offset:4px;border-radius:8px;}
+
+/* ambient blobs */
+.blob{position:fixed;border-radius:50%;filter:blur(70px);opacity:.5;z-index:0;pointer-events:none;animation:drift 10s ease-in-out infinite;}
+.blob.b1{width:480px;height:480px;background:radial-gradient(circle,#FFD96688,transparent 70%);top:-140px;right:-100px;}
+.blob.b2{width:560px;height:560px;background:radial-gradient(circle,#FF9A8B66,transparent 70%);bottom:-220px;left:-160px;animation-duration:13s;animation-delay:-4s;}
+@keyframes drift{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(2%,-3%) scale(1.07);}}
+
+.stage{position:relative;z-index:1;padding:32px 24px;max-width:560px;display:flex;flex-direction:column;align-items:center;}
+
+.wordmark{display:flex;align-items:center;gap:11px;margin-bottom:clamp(36px,7vw,60px);}
+.wordmark svg{width:30px;height:30px;}
+.wordmark span{font-family:'Poppins',sans-serif;font-weight:700;font-size:22px;letter-spacing:-0.01em;}
+
+.glyph{width:clamp(180px,42vw,240px);height:auto;overflow:visible;margin-bottom:clamp(34px,6vw,52px);}
+.g-orbit{transform-origin:50% 50%;animation:spin 60s linear infinite;}
+.g-orbit-rev{transform-origin:50% 50%;animation:spin 48s linear infinite reverse;}
+.g-petals{transform-origin:50% 50%;animation:spin 56s linear infinite;}
+.g-core{transform-origin:50% 50%;animation:breathe 5.5s var(--ease) infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+@keyframes breathe{0%,100%{transform:scale(1);opacity:.9;}50%{transform:scale(1.06);opacity:1;}}
+
+.eyebrow{font-family:'Poppins',sans-serif;font-weight:600;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--deep-coral);margin-bottom:20px;}
+h1{font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(30px,6vw,46px);letter-spacing:-0.02em;line-height:1.08;}
+h1 .grad{background:var(--grad-accent);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.tagline{margin-top:18px;font-size:clamp(16px,2.4vw,19px);color:var(--text-secondary);}
+.foot{margin-top:clamp(40px,8vw,64px);font-size:13px;color:var(--text-tertiary);letter-spacing:0.02em;}
+.foot a{color:var(--deep-coral);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .25s ease;}
+.foot a:hover{border-color:var(--deep-coral);}
+
+@media (prefers-reduced-motion:reduce){*{animation:none !important;}}
+</style>
+</head>
+<body>
+<span class="blob b1" aria-hidden="true"></span>
+<span class="blob b2" aria-hidden="true"></span>
+
+<main class="stage">
+  <div class="wordmark">
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <defs><linearGradient id="mk" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FFD966"/><stop offset="100%" stop-color="#FF9A8B"/></linearGradient></defs>
+      <g fill="url(#mk)"><rect x="3.5" y="7" width="13" height="22" rx="4.5" transform="rotate(-24 10 18)"/><rect x="15.5" y="7" width="13" height="22" rx="4.5" transform="rotate(24 22 18)"/></g>
+      <circle cx="16" cy="13.5" r="3.4" fill="#fff" fill-opacity="0.85"/>
+    </svg>
+    <span>Heqiyou</span>
+  </div>
+
+  <svg class="glyph" viewBox="0 0 200 200" role="img" aria-label="The Heqiyou compatibility glyph">
+    <defs>
+      <radialGradient id="core" cx="50%" cy="40%" r="62%"><stop offset="0%" stop-color="#FFEAC4"/><stop offset="42%" stop-color="#FFB347"/><stop offset="100%" stop-color="#FF9A8B"/></radialGradient>
+      <linearGradient id="petal" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FF9A8B"/><stop offset="100%" stop-color="#C67B7B"/></linearGradient>
+      <radialGradient id="glow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="rgba(255,217,102,0.55)"/><stop offset="60%" stop-color="rgba(255,154,139,0.18)"/><stop offset="100%" stop-color="rgba(255,217,102,0)"/></radialGradient>
+    </defs>
+    <circle cx="100" cy="100" r="96" fill="url(#glow)"/>
+    <g class="g-orbit-rev"><circle cx="100" cy="100" r="76" fill="none" stroke="url(#petal)" stroke-width="1.4" stroke-dasharray="2 9" stroke-linecap="round" opacity="0.65"/></g>
+    <g class="g-petals" fill="url(#petal)" opacity="0.9">
+      <ellipse cx="100" cy="44" rx="8.5" ry="20" transform="rotate(0 100 100)"/>
+      <ellipse cx="100" cy="44" rx="8.5" ry="20" transform="rotate(51.4 100 100)"/>
+      <ellipse cx="100" cy="44" rx="8.5" ry="20" transform="rotate(102.8 100 100)"/>
+      <ellipse cx="100" cy="44" rx="8.5" ry="20" transform="rotate(154.3 100 100)"/>
+      <ellipse cx="100" cy="44" rx="8.5" ry="20" transform="rotate(205.7 100 100)"/>
+      <ellipse cx="100" cy="44" rx="8.5" ry="20" transform="rotate(257.1 100 100)"/>
+      <ellipse cx="100" cy="44" rx="8.5" ry="20" transform="rotate(308.6 100 100)"/>
+    </g>
+    <g class="g-orbit">
+      <circle cx="100" cy="14" r="2.6" fill="#FFD966"/><circle cx="170" cy="74" r="2.2" fill="#FF9A8B"/>
+      <circle cx="150" cy="156" r="3" fill="#FFB347"/><circle cx="48" cy="150" r="2.3" fill="#FF9A8B"/><circle cx="34" cy="78" r="2.8" fill="#FFD966"/>
+    </g>
+    <g class="g-core"><circle cx="100" cy="100" r="27" fill="url(#core)"/><circle cx="92" cy="92" r="7" fill="#fff" fill-opacity="0.4"/></g>
+  </svg>
+
+  <p class="eyebrow">Coming soon · Southeast Asia</p>
+  <h1>Something worth<br/><span class="grad">talking about.</span></h1>
+  <p class="tagline">Meaningful conversations. Lasting relationships.</p>
+
+  <p class="foot">A <a href="https://www.deployku.com">Deployku</a> product</p>
+</main>
+</body>
+</html>
