@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/png" href="logo.png" />
 <title>Heqiyou — Talk first. Reveal later.</title>
 <meta name="description" content="Heqiyou is a voice-first dating app. You talk first on a short anonymous blind voice date, and profiles are revealed only if you both choose to continue." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -48,7 +49,7 @@
 
   --ease-out:cubic-bezier(0.16,1,0.3,1);
   --maxw:1120px;
-  --header-h:72px;
+  --header-h:96px;
 }
 
 /* ============================================================
@@ -215,7 +216,7 @@ section{padding-block:clamp(72px,11vw,128px);}
 }
 .header-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:24px;}
 .wordmark{display:flex;align-items:center;gap:11px;font-family:'Poppins',sans-serif;font-weight:700;font-size:20px;letter-spacing:-0.01em;}
-.wordmark-mark{width:30px;height:30px;flex:none;}
+.wordmark-mark{height:80px;width:auto;flex:none;}
 .nav{display:flex;align-items:center;gap:34px;}
 .nav-links{display:flex;gap:30px;}
 .nav-links a{font-size:15px;color:var(--text-secondary);font-weight:500;transition:color .3s ease;}
@@ -631,8 +632,7 @@ section{padding-block:clamp(72px,11vw,128px);}
 <header class="site-header" id="header">
   <div class="header-inner">
     <a href="#top" class="wordmark" aria-label="Heqiyou home">
-      <svg class="wordmark-mark" viewBox="0 0 32 32" aria-hidden="true"><use href="#mark"/></svg>
-      <span>Heqiyou</span>
+      <img src="logo.png" class="wordmark-mark" alt="Heqiyou" />
     </a>
     <nav class="nav" aria-label="Primary">
       <div class="nav-links">
@@ -994,8 +994,7 @@ section{padding-block:clamp(72px,11vw,128px);}
 <footer class="site-foot">
   <div class="wrap site-foot-inner">
     <a href="#top" class="wordmark" aria-label="Heqiyou home">
-      <svg class="wordmark-mark" viewBox="0 0 32 32" aria-hidden="true"><use href="#mark"/></svg>
-      <span>Heqiyou</span>
+      <img src="logo.png" class="wordmark-mark" alt="Heqiyou" />
     </a>
     <nav class="foot-links" aria-label="Footer">
       <a href="privacy.html">Privacy Policy</a>
