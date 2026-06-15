@@ -28,6 +28,7 @@
   --bg-blush:#FFF5F5;
   --bg-cream:#FFFBF0;
   --bg-chip:#FFF1EC;
+  --bg-wash:linear-gradient(180deg,rgba(255,251,240,0.58),rgba(255,245,245,0.58));
 
   --success:#4CAF50;
   --warning:#F59E0B;
@@ -550,6 +551,30 @@ section{padding-block:clamp(72px,11vw,128px);}
 .foot-copy{font-size:13px;color:rgba(255,255,255,0.5);width:100%;border-top:1px solid rgba(255,255,255,0.1);padding-top:24px;margin-top:8px;}
 
 /* ============================================================
+   FULL-BLEED SCROLL BACKGROUNDS (cross-fade per section)
+   ============================================================ */
+.bg-stack{
+  position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:var(--bg-primary);
+}
+.bg-layer{
+  position:absolute;inset:0;
+  opacity:0;transition:opacity 1s var(--ease-out);
+  will-change:opacity;
+}
+.bg-layer.is-active{opacity:1;}
+.bg-layer img{width:100%;height:100%;object-fit:cover;object-position:center;}
+/* readability wash sits over the photo, under the content */
+.bg-stack::after{
+  content:"";position:absolute;inset:0;
+  background:var(--bg-wash);
+}
+/* let the fixed photos show through every section */
+.hero,.how,.call,.after,.safety,.philosophy,.credits,.faq,.footer-cta{
+  background:transparent;
+}
+
+/* ============================================================
    REDUCED MOTION
    ============================================================ */
 @media (prefers-reduced-motion:reduce){
@@ -559,6 +584,20 @@ section{padding-block:clamp(72px,11vw,128px);}
 </style>
 </head>
 <body>
+<!-- ============================================================
+     FULL-BLEED BACKGROUND STACK (cross-fades on scroll)
+     ============================================================ -->
+<div class="bg-stack" aria-hidden="true">
+  <div class="bg-layer" data-bg="hero"><picture><source media="(max-width:640px)" srcset="bg-hero-m.webp"/><img src="bg-hero.webp" alt=""/></picture></div>
+  <div class="bg-layer" data-bg="how"><picture><source media="(max-width:640px)" srcset="bg-how-m.webp"/><img src="bg-how.webp" alt=""/></picture></div>
+  <div class="bg-layer" data-bg="call"><picture><source media="(max-width:640px)" srcset="bg-call-m.webp"/><img src="bg-call.webp" alt=""/></picture></div>
+  <div class="bg-layer" data-bg="after"><picture><source media="(max-width:640px)" srcset="bg-after-m.webp"/><img src="bg-after.webp" alt=""/></picture></div>
+  <div class="bg-layer" data-bg="safety"><picture><source media="(max-width:640px)" srcset="bg-safety-m.webp"/><img src="bg-safety.webp" alt=""/></picture></div>
+  <div class="bg-layer" data-bg="philosophy"><picture><source media="(max-width:640px)" srcset="bg-philosophy-m.webp"/><img src="bg-philosophy.webp" alt=""/></picture></div>
+  <div class="bg-layer" data-bg="credits"><picture><source media="(max-width:640px)" srcset="bg-credits-m.webp"/><img src="bg-credits.webp" alt=""/></picture></div>
+  <div class="bg-layer" data-bg="faq"><picture><source media="(max-width:640px)" srcset="bg-faq-m.webp"/><img src="bg-faq.webp" alt=""/></picture></div>
+  <div class="bg-layer" data-bg="cta"><picture><source media="(max-width:640px)" srcset="bg-cta-m.webp"/><img src="bg-cta.webp" alt=""/></picture></div>
+</div>
 <!-- ============================================================
      SHARED SVG DEFS + SYMBOLS (glyph, wordmark)
      ============================================================ -->
@@ -651,13 +690,13 @@ section{padding-block:clamp(72px,11vw,128px);}
 <!-- ============================================================
      HERO
      ============================================================ -->
-<section class="hero" aria-labelledby="hero-h1">
+<section class="hero" data-bg-key="hero" aria-labelledby="hero-h1">
   <span class="hero-blob b1" aria-hidden="true"></span>
   <span class="hero-blob b2" aria-hidden="true"></span>
   <div class="wrap hero-inner">
     <div class="hero-copy reveal">
       <p class="eyebrow">Voice-first dating · Southeast Asia</p>
-      <h1 class="hero-h1" id="hero-h1">Find someone<br/><span class="grad-text">to talk to.</span></h1>
+      <h1 class="hero-h1" id="hero-h1">Find someone<br/><span class="grad-text">to you.</span></h1>
       <p class="hero-sub">Talk first on a short, anonymous voice date. Reveal who you are only if you both choose to continue.</p>
       <div class="hero-cta">
         <a href="#get" class="btn btn-primary btn-lg">Get the app</a>
@@ -673,7 +712,7 @@ section{padding-block:clamp(72px,11vw,128px);}
 <!-- ============================================================
      HOW IT WORKS
      ============================================================ -->
-<section class="how" id="how" aria-labelledby="how-h2">
+<section class="how" id="how" data-bg-key="how" aria-labelledby="how-h2">
   <div class="wrap">
     <div class="section-head reveal">
       <p class="eyebrow">How it works</p>
@@ -721,7 +760,7 @@ section{padding-block:clamp(72px,11vw,128px);}
 <!-- ============================================================
      THE BLIND-DATE CALL
      ============================================================ -->
-<section class="call" id="call" aria-labelledby="call-h2">
+<section class="call" id="call" data-bg-key="call" aria-labelledby="call-h2">
   <div class="wrap">
     <div class="call-panel reveal">
       <div class="call-copy">
@@ -749,7 +788,7 @@ section{padding-block:clamp(72px,11vw,128px);}
 <!-- ============================================================
      AFTER THE CALL — mutual reveal
      ============================================================ -->
-<section class="after" id="after" aria-labelledby="after-h2">
+<section class="after" id="after" data-bg-key="after" aria-labelledby="after-h2">
   <div class="wrap after-grid">
     <div class="reveal">
       <p class="eyebrow">After the call</p>
@@ -818,7 +857,7 @@ section{padding-block:clamp(72px,11vw,128px);}
 <!-- ============================================================
      SAFETY
      ============================================================ -->
-<section class="safety" id="safety" aria-labelledby="safety-h2">
+<section class="safety" id="safety" data-bg-key="safety" aria-labelledby="safety-h2">
   <div class="wrap">
     <div class="section-head reveal">
       <p class="eyebrow">Safety, first — not last</p>
@@ -863,7 +902,7 @@ section{padding-block:clamp(72px,11vw,128px);}
 <!-- ============================================================
      WHY VOICE / PHILOSOPHY
      ============================================================ -->
-<section class="philosophy" aria-labelledby="phil-h2">
+<section class="philosophy" data-bg-key="philosophy" aria-labelledby="phil-h2">
   <div class="wrap">
     <p class="eyebrow reveal" id="phil-h2">Why voice</p>
     <div class="manifesto">
@@ -881,7 +920,7 @@ section{padding-block:clamp(72px,11vw,128px);}
 <!-- ============================================================
      CREDITS
      ============================================================ -->
-<section class="credits" id="credits" aria-labelledby="credits-h2">
+<section class="credits" id="credits" data-bg-key="credits" aria-labelledby="credits-h2">
   <div class="wrap">
     <div class="section-head reveal">
       <p class="eyebrow">Credits, plainly</p>
@@ -915,7 +954,7 @@ section{padding-block:clamp(72px,11vw,128px);}
 <!-- ============================================================
      FAQ
      ============================================================ -->
-<section class="faq" id="faq" aria-labelledby="faq-h2">
+<section class="faq" id="faq" data-bg-key="faq" aria-labelledby="faq-h2">
   <div class="wrap faq-inner">
     <div class="section-head reveal">
       <p class="eyebrow">Questions</p>
@@ -966,7 +1005,7 @@ section{padding-block:clamp(72px,11vw,128px);}
 <!-- ============================================================
      FOOTER CTA
      ============================================================ -->
-<section class="footer-cta" id="get" aria-labelledby="get-h2">
+<section class="footer-cta" id="get" data-bg-key="cta" aria-labelledby="get-h2">
   <svg class="glyph" viewBox="0 0 200 200" aria-hidden="true"><use href="#glyph"/></svg>
   <div class="wrap">
     <div class="reveal">
@@ -1028,6 +1067,27 @@ section{padding-block:clamp(72px,11vw,128px);}
       });
     }, {threshold:0.12, rootMargin:'0px 0px -8% 0px'});
     reveals.forEach(function(el){ io.observe(el); });
+  }
+
+  /* Full-bleed background cross-fade — activate the layer for whichever
+     section is crossing the centre of the viewport */
+  var layers = {};
+  document.querySelectorAll('.bg-layer').forEach(function(l){ layers[l.dataset.bg] = l; });
+  var bgSections = document.querySelectorAll('[data-bg-key]');
+  var setActive = function(key){
+    Object.keys(layers).forEach(function(k){ layers[k].classList.toggle('is-active', k === key); });
+  };
+  if(bgSections.length){
+    if(!('IntersectionObserver' in window)){
+      setActive('hero');
+    } else {
+      var bgIO = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting){ setActive(e.target.dataset.bgKey); }
+        });
+      }, {rootMargin:'-45% 0px -45% 0px', threshold:0});
+      bgSections.forEach(function(s){ bgIO.observe(s); });
+    }
   }
 
   /* FAQ accordion */
