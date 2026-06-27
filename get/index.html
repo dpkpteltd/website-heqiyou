@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Get Heqiyou</title>
+</head>
+<body>
+  <p>Redirecting you to download Heqiyou…</p>
+  <script>
+    var ua = navigator.userAgent || navigator.vendor || window.opera;
+
+    var ios = /iPad|iPhone|iPod/.test(ua);
+    var android = /android/i.test(ua);
+
+    var APPLE = "https://apps.apple.com/app/id6779987367";
+    var PLAY  = "https://play.google.com/store/apps/details?id=com.deployku.heqiyou";
+    var FALLBACK = "https://heqiyou.com"; // desktop or anything else
+
+    if (ios) {
+      window.location.replace(APPLE);
+    } else if (android) {
+      window.location.replace(PLAY);
+    } else {
+      window.location.replace(FALLBACK);
+    }
+  </script>
+</body>
+</html>
